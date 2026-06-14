@@ -1,0 +1,22 @@
+# Build artifacts
+*.o
+*.out
+*.exe
+a.out
+build/
+dist/
+
+# Editor and IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Debug
+*.dSYM/
+core
+core.*
+
+# Project-specific
+gradebook.csv
+contacts.dat
