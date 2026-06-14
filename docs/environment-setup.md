@@ -22,6 +22,31 @@ Required before [Phase 2, Module 2.5](../phase-02-memory-core-c/module-02-05-gdb
 sudo apt install -y valgrind
 ```
 
+Required for Phase 5:
+
+```bash
+sudo apt install -y strace
+```
+
+Optional for Phase 5 networking projects:
+
+```bash
+sudo apt install -y net-tools curl
+```
+
+Optional for Phase 7 code navigation:
+
+```bash
+sudo apt install -y ripgrep universal-ctags cscope global
+```
+
+Optional for Phase 6:
+
+```bash
+sudo apt install -y binutils
+sudo apt install -y linux-tools-generic   # perf, optional
+```
+
 ## Verify Installation
 
 From the repository root:
@@ -30,6 +55,10 @@ From the repository root:
 ./scripts/verify-phase-01.sh   # after Phase 1 setup
 ./scripts/verify-phase-02.sh   # before Phase 2 (requires Valgrind)
 ./scripts/verify-phase-03.sh   # before Phase 3
+./scripts/verify-phase-04.sh   # before Phase 4
+./scripts/verify-phase-05.sh   # before Phase 5
+./scripts/verify-phase-06.sh   # before Phase 6
+./scripts/verify-phase-07.sh   # before Phase 7
 ```
 
 Expected output: all checks pass with `OK` messages.
@@ -104,7 +133,7 @@ Compile with `-g` and without `-O2` while learning: `gcc -g -O0 ...`
 ### Permission denied running verify script
 
 ```bash
-chmod +x scripts/verify-phase-01.sh scripts/verify-phase-02.sh scripts/verify-phase-03.sh
+chmod +x scripts/verify-phase-01.sh scripts/verify-phase-02.sh scripts/verify-phase-03.sh scripts/verify-phase-04.sh scripts/verify-phase-05.sh scripts/verify-phase-06.sh scripts/verify-phase-07.sh
 ```
 
 ## Next Step
