@@ -59,4 +59,4 @@ learn-c/
 
 ## Current Status
 
-**Phases 1–7 are fully implemented.** Phases 8–11 contain module outlines only and will be expanded in future releases after review.
+**Phases 1–9 are fully implemented.** Phases 10–11 contain module outlines only and will be expanded in future releases after review.

@@ -47,6 +47,37 @@ sudo apt install -y binutils
 sudo apt install -y linux-tools-generic   # perf, optional
 ```
 
+Required for Phase 8 (kernel build and VM boot):
+
+```bash
+sudo apt install -y bc bison flex libssl-dev libelf-dev libncurses-dev \
+    rsync dwarves qemu-system-x86
+```
+
+Optional for Phase 8:
+
+```bash
+sudo apt install -y ccache   # faster rebuilds
+```
+
+Phase 8 needs **~25 GB free disk** for a kernel tree and build directory, and **8 GB RAM minimum** (16 GB recommended for parallel `make -j`).
+
+Set your local kernel tree before Module 8.2:
+
+```bash
+export KERNEL_SRC="$HOME/src/linux"
+```
+
+See [resources/phase-08.md](../resources/phase-08.md) for pinned kernel tag and VM setup.
+
+Required for Phase 9 (loadable kernel modules in VM):
+
+- Complete Phase 8 setup first
+- Rebuild VM kernel with [labs/phase-09/configs/learn-c-modules.config](../labs/phase-09/configs/learn-c-modules.config) merged into `.config`
+- See [resources/phase-09.md](../resources/phase-09.md)
+
+No additional host packages beyond Phase 8 are required for Phase 9.
+
 ## Verify Installation
 
 From the repository root:
@@ -59,6 +90,8 @@ From the repository root:
 ./scripts/verify-phase-05.sh   # before Phase 5
 ./scripts/verify-phase-06.sh   # before Phase 6
 ./scripts/verify-phase-07.sh   # before Phase 7
+./scripts/verify-phase-08.sh   # before Phase 8
+./scripts/verify-phase-09.sh   # before Phase 9 (requires Phase 8 + modules config)
 ```
 
 Expected output: all checks pass with `OK` messages.
@@ -133,7 +166,7 @@ Compile with `-g` and without `-O2` while learning: `gcc -g -O0 ...`
 ### Permission denied running verify script
 
 ```bash
-chmod +x scripts/verify-phase-01.sh scripts/verify-phase-02.sh scripts/verify-phase-03.sh scripts/verify-phase-04.sh scripts/verify-phase-05.sh scripts/verify-phase-06.sh scripts/verify-phase-07.sh
+chmod +x scripts/verify-phase-01.sh scripts/verify-phase-02.sh scripts/verify-phase-03.sh scripts/verify-phase-04.sh scripts/verify-phase-05.sh scripts/verify-phase-06.sh scripts/verify-phase-07.sh scripts/verify-phase-08.sh scripts/verify-phase-09.sh
 ```
 
 ## Next Step

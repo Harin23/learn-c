@@ -83,6 +83,6 @@ Before advancing to Phase 8, confirm:
 
 ## Next Phase
 
-[Phase 8 — Linux Kernel Fundamentals](../../phase-08-linux-kernel-fundamentals/) (coming soon)
+[Phase 8 — Linux Kernel Fundamentals](../../phase-08-linux-kernel-fundamentals/)
 
 Requires Phase 6 + Phase 7 complete.

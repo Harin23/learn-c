@@ -68,7 +68,31 @@ Each module within a phase depends on the previous module in that phase unless n
 5.1 Syscalls → 5.2 fork/exec → 5.3 Pipes → 5.4 pthreads → 5.5 TCP/IP → 5.6 Event-Driven
 ```
 
-Phases 6–11 module chains will be documented when those phases are expanded.
+### Phase 6: Computer Architecture and OS
+
+```
+6.1 CPU Architecture → 6.2 Virtual Memory → 6.3 Scheduling → 6.4 Filesystems → 6.5 Drivers/Interrupts/Caches
+```
+
+### Phase 7: Reading Large Codebases
+
+```
+7.1 Navigating Repos → 7.2 Linux Source Tree → 7.3 Docs and Small Fixes
+```
+
+### Phase 8: Linux Kernel Fundamentals
+
+```
+8.1 Kernel Architecture → 8.2 Kernel Build → 8.3 Subsystems/APIs → 8.4 MM/Scheduling → 8.5 Synchronization
+```
+
+### Phase 9: Kernel Modules and Drivers
+
+```
+9.1 LKM → 9.2 Char Devices → 9.3 Sysfs/Procfs → 9.4 PCI/Driver Model → 9.5 HW Interfaces
+```
+
+Phases 10–11 module chains will be documented when those phases are expanded.
 
 ## Hard Gates
 

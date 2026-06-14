@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Template: boot custom bzImage in QEMU/KVM
+# Copy to ~/bin/qemu-boot-test.sh and customize paths.
+#
+# Prerequisites:
+#   - Custom bzImage from kernel build
+#   - Root filesystem image OR initrd plan (see Project 43)
+#   - Completed vm-safety-checklist.md
+#
+# Usage:
+#   export KERNEL_SRC="$HOME/src/linux"
+#   export BZIMAGE="$KERNEL_SRC/arch/x86/boot/bzImage"
+#   export DISK_IMAGE="$HOME/vm/ubuntu-test.qcow2"   # your VM disk
+#   ./qemu-boot-test.sh
+
+set -euo pipefail
+
+: "${BZIMAGE:?Set BZIMAGE to path of arch/x86/boot/bzImage}"
+: "${DISK_IMAGE:?Set DISK_IMAGE to qcow2 with installed distro}"
+
+MEMORY_MB="${MEMORY_MB:-4096}"
+SMP="${SMP:-2}"
+KERNEL_APPEND="${KERNEL_APPEND:-console=ttyS0 root=/dev/sda1 rw}"
+
+exec qemu-system-x86_64 \
+	-machine type=q35,accel=kvm \
+	-cpu host \
+	-smp "$SMP" \
+	-m "$MEMORY_MB" \
+	-kernel "$BZIMAGE" \
+	-drive "file=${DISK_IMAGE},format=qcow2,if=virtio" \
+	-append "$KERNEL_APPEND" \
+	-nographic \
+	-serial mon:stdio
+
+# Alternative: boot with existing VM manager (VirtualBox, virt-manager)
+# Document equivalent settings in BUILD_LOG.md instead of this script.

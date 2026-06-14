@@ -78,14 +78,32 @@ This curriculum uses **52 small projects** across 11 phases. Each project reinfo
 | 40 | Kernel subsystem trace | 7.2 | [40-kernel-subsystem-trace.md](../projects/phase-07/40-kernel-subsystem-trace.md) |
 | 41 | Small patch submission | 7.3 | [41-small-patch-submission.md](../projects/phase-07/41-small-patch-submission.md) |
 
-## Full Project Roadmap (Phases 8–11)
+## Phase 8 Projects (Detailed)
 
-Detailed specs for projects 42–52 will ship with their respective phase expansions.
+| # | Project | Module | Spec |
+|---|---------|--------|------|
+| 42 | Kernel boot log analysis | 8.1 | [42-kernel-boot-log-analysis.md](../projects/phase-08/42-kernel-boot-log-analysis.md) |
+| 43 | Custom kernel build and VM boot | 8.2 | [43-custom-kernel-build-boot.md](../projects/phase-08/43-custom-kernel-build-boot.md) |
+| 44 | Syscall debug patch | 8.3 | [44-syscall-debug-patch.md](../projects/phase-08/44-syscall-debug-patch.md) |
+| 45 | MM or scheduler live trace | 8.4 | [45-mm-or-sched-trace.md](../projects/phase-08/45-mm-or-sched-trace.md) |
+| 46 | Phase 8 capstone patch | 8.5 | [46-kernel-patch-capstone.md](../projects/phase-08/46-kernel-patch-capstone.md) |
+
+## Phase 9 Projects (Detailed)
+
+| # | Project | Module | Spec |
+|---|---------|--------|------|
+| 47 | Hello LKM with module parameter | 9.1 | [47-hello-lkm-parameter.md](../projects/phase-09/47-hello-lkm-parameter.md) |
+| 48 | Circular buffer char device | 9.2 | [48-chardev-buffer.md](../projects/phase-09/48-chardev-buffer.md) |
+| 49 | Sysfs monitoring module | 9.3 | [49-sysfs-monitoring-module.md](../projects/phase-09/49-sysfs-monitoring-module.md) |
+| 50 | PCI driver architecture lab | 9.4 | [50-pci-driver-architecture.md](../projects/phase-09/50-pci-driver-architecture.md) |
+| 51 | Phase 9 driver capstone | 9.5 | [51-driver-capstone.md](../projects/phase-09/51-driver-capstone.md) |
+
+## Full Project Roadmap (Phases 10–11)
+
+Detailed specs for project 52 will ship with Phase 10–11 expansion.
 
 | # | Project | Phase | Skills |
 |---|---------|-------|--------|
-| 42–46 | Kernel build, trace, patches | 8 | kernel |
-| 47–51 | LKM, char device, sysfs | 9 | drivers |
 | 52 | AMDGPU trace + contribution | 10–11 | upstream |
 
 ## Project Sizing Guidelines
@@ -97,12 +115,14 @@ Detailed specs for projects 42–52 will ship with their respective phase expans
 - Phase 5 projects: 6–10 hours each (shell/HTTP/chat/procmgr: 8–10 hours)
 - Phase 6 projects: 5–9 hours each (analysis-heavy; capstone ~7–9 hours)
 - Phase 7 projects: 8–12 hours each (reports + patch capstone)
+- Phase 8 projects: 10–18 hours each (build wait time included; capstone up to 18 hours)
+- Phase 9 projects: 8–18 hours each (kernel modules in VM; capstone up to 18 hours)
 - Later phase projects: 4–12 hours each
 - Favor completing many small projects over one large project per phase
 
 ## Submission Checklist (All Projects)
 
-- [ ] Compiles with `-Wall -Wextra -std=c11` with zero warnings
+- [ ] Compiles with `-Wall -Wextra -std=c11` with zero warnings (user-space tools; kernel modules use VM build + load tests)
 - [ ] Includes a brief README with build/run instructions
 - [ ] Handles invalid input without crashing (where applicable)
 - [ ] Code is readable with meaningful names
