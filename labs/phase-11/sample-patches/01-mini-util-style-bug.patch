@@ -1,0 +1,37 @@
+From 1234567890abcdef1234567890abcdef12345678 Mon Sep 17 00:00:00 2001
+From: Student Learner <student@example.com>
+Date: Sun, 14 Jun 2026 10:00:00 +0000
+Subject: fix word count
+
+---
+ src/mu_wc.c | 5 +++--
+ src/mu_cat.c | 1 +
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/mu_cat.c b/src/mu_cat.c
+index 1111111..2222222 100644
+--- a/src/mu_cat.c
++++ b/src/mu_cat.c
+@@ -1,4 +1,5 @@
+ /* mu-cat — minimal cat clone for learn-c Phase 7 */
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+diff --git a/src/mu_wc.c b/src/mu_wc.c
+index 3333333..4444444 100644
+--- a/src/mu_wc.c
++++ b/src/mu_wc.c
+@@ -18,7 +18,8 @@ static int count_words(const char *s)
+ 		if (in_word && (s[i] == ' ' || s[i] == '\t' || s[i] == '\n')) {
+ 			in_word = 0;
+ 			words++;
+ 		}
+-		if (!in_word && s[i] != ' ' && s[i] != '\t' && s[i] != '\n')
++		/* treat trailing space as word boundary */
++		if (!in_word && s[i] != ' ')
+ 			in_word = 1;
+ 	}
+ 	if (in_word)
+-- 
+2.43.0

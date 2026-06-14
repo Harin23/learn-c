@@ -98,13 +98,27 @@ This curriculum uses **52 small projects** across 11 phases. Each project reinfo
 | 50 | PCI driver architecture lab | 9.4 | [50-pci-driver-architecture.md](../projects/phase-09/50-pci-driver-architecture.md) |
 | 51 | Phase 9 driver capstone | 9.5 | [51-driver-capstone.md](../projects/phase-09/51-driver-capstone.md) |
 
-## Full Project Roadmap (Phases 10–11)
+## Phase 10 Projects and Reports (Detailed)
 
-Detailed specs for project 52 will ship with Phase 10–11 expansion.
+Module reports plus **Project 52 Part A** (curriculum project 52 continues in Phase 11 Part B).
 
-| # | Project | Phase | Skills |
-|---|---------|-------|--------|
-| 52 | AMDGPU trace + contribution | 10–11 | upstream |
+| Deliverable | Module | Spec | Output |
+|-------------|--------|------|--------|
+| Graphics stack map | 10.1 | [graphics-stack-map.md](../projects/phase-10/graphics-stack-map.md) | `GRAPHICS_STACK.md` |
+| DRM/AMDGPU architecture walk | 10.2 | [drm-amdgpu-architecture.md](../projects/phase-10/drm-amdgpu-architecture.md) | `DRM_AMDGPU_WALK.md` |
+| Mesa/GPU scheduling path | 10.3 | [mesa-gpu-scheduling.md](../projects/phase-10/mesa-gpu-scheduling.md) | `MESA_GPU_PATH.md` |
+| GEM/TTM analysis | 10.4 | [gem-ttm-memory.md](../projects/phase-10/gem-ttm-memory.md) | `GEM_TTM_ANALYSIS.md` |
+| **52 Part A** — AMDGPU trace | 10.4 | [52-amdgpu-trace-part-a.md](../projects/phase-10/52-amdgpu-trace-part-a.md) | `AMDGPU_TRACE.md` |
+
+## Phase 11 Projects and Reports (Detailed)
+
+Module reports plus **Project 52 Part B** (completes curriculum project 52).
+
+| Deliverable | Module | Spec | Output |
+|-------------|--------|------|--------|
+| Patch review practice | 11.1 | [patch-review-practice.md](../projects/phase-11/patch-review-practice.md) | `PATCH_REVIEW_NOTES.md` |
+| Upstream submission plan | 11.2 | [upstream-submission-plan.md](../projects/phase-11/upstream-submission-plan.md) | `UPSTREAM_SUBMISSION_PLAN.md` |
+| **52 Part B** — AMDGPU upstream contribution | 11.3 | [52-amdgpu-contribution-part-b.md](../projects/phase-11/52-amdgpu-contribution-part-b.md) | patch series + `CONTRIBUTION_REPORT.md` |
 
 ## Project Sizing Guidelines
 
@@ -117,7 +131,8 @@ Detailed specs for project 52 will ship with Phase 10–11 expansion.
 - Phase 7 projects: 8–12 hours each (reports + patch capstone)
 - Phase 8 projects: 10–18 hours each (build wait time included; capstone up to 18 hours)
 - Phase 9 projects: 8–18 hours each (kernel modules in VM; capstone up to 18 hours)
-- Later phase projects: 4–12 hours each
+- Phase 10 deliverables: 10–16 hours each (analysis reports; Project 52 Part A up to 16 hours)
+- Phase 11 deliverables: 8–18 hours each (review/plan reports; Project 52 Part B up to 18 hours)
 - Favor completing many small projects over one large project per phase
 
 ## Submission Checklist (All Projects)

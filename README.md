@@ -59,4 +59,4 @@ learn-c/
 
 ## Current Status
 
-**Phases 1–9 are fully implemented.** Phases 10–11 contain module outlines only and will be expanded in future releases after review.
+**All 11 phases are fully implemented.** Phase 11 completes the curriculum with upstream contribution workflow and Project 52 Part B.

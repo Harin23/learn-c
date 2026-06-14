@@ -92,7 +92,19 @@ Each module within a phase depends on the previous module in that phase unless n
 9.1 LKM → 9.2 Char Devices → 9.3 Sysfs/Procfs → 9.4 PCI/Driver Model → 9.5 HW Interfaces
 ```
 
-Phases 10–11 module chains will be documented when those phases are expanded.
+### Phase 10: AMD Driver and Graphics Stack
+
+```
+10.1 Graphics Stack → 10.2 DRM/AMDGPU → 10.3 Mesa/Scheduling → 10.4 GEM/TTM
+```
+
+### Phase 11: Open Source Contributions
+
+```
+11.1 Patch Workflow/Reviews → 11.2 Linux Contribution Process → 11.3 Upstream/Capstone
+```
+
+Completing Phase 11 satisfies the **curriculum completion gate** (all 52 projects).
 
 ## Hard Gates
 
@@ -106,6 +118,7 @@ These rules prevent skipping foundational material. Do not advance until exit cr
 | Start Phase 8 | Complete Phases 5, 6, and 7 |
 | Start Phase 10 | Complete Phases 8 and 9 |
 | Start Phase 11 | Complete Phases 7, 9, and 10 (or equivalent experience) |
+| Curriculum complete | Complete Phase 11 exit gate (Project 52 Part B + module reports) |
 
 ### Parallel Paths
 

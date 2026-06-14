@@ -98,3 +98,5 @@ Phase 10 explores DRM and AMDGPU. Complete [Phase 9 exit gate](../phase-09-kerne
 - Projects 47–51 complete
 
 Do not start AMDGPU code reading until Phase 10.
+
+Next: [resources/phase-10.md](phase-10.md) — graphics stack and AMDGPU analysis.

@@ -78,6 +78,23 @@ Required for Phase 9 (loadable kernel modules in VM):
 
 No additional host packages beyond Phase 8 are required for Phase 9.
 
+Optional for Phase 10 (AMD GPU analysis on host — Path A):
+
+```bash
+sudo apt install -y mesa-utils vulkan-tools   # glxinfo, vulkaninfo
+```
+
+Phase 10 does **not** require AMD hardware; source-only analysis via `$KERNEL_SRC` or Elixir (Path B) is sufficient. See [resources/phase-10.md](../resources/phase-10.md).
+
+Optional for Phase 11 (upstream submission — Path A):
+
+```bash
+pip install --user b4          # preferred patch send/receive tool
+sudo apt install -y git-email  # optional; git send-email helper
+```
+
+Phase 11 does **not** require email setup for Path B (dry-run export). See [resources/phase-11.md](../resources/phase-11.md).
+
 ## Verify Installation
 
 From the repository root:
@@ -92,6 +109,8 @@ From the repository root:
 ./scripts/verify-phase-07.sh   # before Phase 7
 ./scripts/verify-phase-08.sh   # before Phase 8
 ./scripts/verify-phase-09.sh   # before Phase 9 (requires Phase 8 + modules config)
+./scripts/verify-phase-10.sh   # before Phase 10
+./scripts/verify-phase-11.sh   # before Phase 11
 ```
 
 Expected output: all checks pass with `OK` messages.
@@ -166,7 +185,7 @@ Compile with `-g` and without `-O2` while learning: `gcc -g -O0 ...`
 ### Permission denied running verify script
 
 ```bash
-chmod +x scripts/verify-phase-01.sh scripts/verify-phase-02.sh scripts/verify-phase-03.sh scripts/verify-phase-04.sh scripts/verify-phase-05.sh scripts/verify-phase-06.sh scripts/verify-phase-07.sh scripts/verify-phase-08.sh scripts/verify-phase-09.sh
+chmod +x scripts/verify-phase-01.sh scripts/verify-phase-02.sh scripts/verify-phase-03.sh scripts/verify-phase-04.sh scripts/verify-phase-05.sh scripts/verify-phase-06.sh scripts/verify-phase-07.sh scripts/verify-phase-08.sh scripts/verify-phase-09.sh scripts/verify-phase-10.sh scripts/verify-phase-11.sh
 ```
 
 ## Next Step

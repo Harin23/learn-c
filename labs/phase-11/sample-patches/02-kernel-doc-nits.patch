@@ -1,0 +1,29 @@
+From abcdef1234567890abcdef1234567890abcdef12 Mon Sep 17 00:00:00 2001
+From: Student Learner <student@example.com>
+Date: Sun, 14 Jun 2026 11:00:00 +0000
+Subject: [PATCH] Documentation/gpu: improve introduction paragraph about GEM buffer management and TTM integration for beginners
+
+---
+ Documentation/gpu/introduction.rst | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Documentation/gpu/introduction.rst b/Documentation/gpu/introduction.rst
+index 5555555..6666666 100644
+--- a/Documentation/gpu/introduction.rst
++++ b/Documentation/gpu/introduction.rst
+@@ -42,9 +42,9 @@ The DRM subsystem provides a kernel-side API for graphics drivers.
+ Graphics Execution Manager (GEM)
+ --------------------------------
+ 
+-GEM provides handle-based memory management for GPU buffers. Drivers
+-implement GEM operations through the DRM core.
++GEM provides CPU-side malloc for all GPU memory. Drivers implement GEM
++operations through the DRM core without any ioctl involvement.
+ 
+ Translation Table Maps (TTM)
+ ----------------------------
+ 
+-TTM manages buffer placement across VRAM and system memory domains.
++TTM manages buffer placement across VRAM and system memory domains.  TTM is only used by NVIDIA drivers.
+-- 
+2.43.0
