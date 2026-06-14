@@ -16,51 +16,51 @@ sudo apt install -y \
     linux-tools-common
 ```
 
-Required before [Phase 2, Module 2.5](../phase-02-memory-core-c/module-02-05-gdb-valgrind-pitfalls/README.md):
+Required before [Part 2, Module 2.5](../part-02-memory-core-c/module-02-05-gdb-valgrind-pitfalls/README.md):
 
 ```bash
 sudo apt install -y valgrind
 ```
 
-Required for Phase 5:
+Required for Part 5:
 
 ```bash
 sudo apt install -y strace
 ```
 
-Optional for Phase 5 networking projects:
+Optional for Part 5 networking projects:
 
 ```bash
 sudo apt install -y net-tools curl
 ```
 
-Optional for Phase 7 code navigation:
+Optional for Part 7 code navigation:
 
 ```bash
 sudo apt install -y ripgrep universal-ctags cscope global
 ```
 
-Optional for Phase 6:
+Optional for Part 6:
 
 ```bash
 sudo apt install -y binutils
 sudo apt install -y linux-tools-generic   # perf, optional
 ```
 
-Required for Phase 8 (kernel build and VM boot):
+Required for Part 8 (kernel build and VM boot):
 
 ```bash
 sudo apt install -y bc bison flex libssl-dev libelf-dev libncurses-dev \
     rsync dwarves qemu-system-x86
 ```
 
-Optional for Phase 8:
+Optional for Part 8:
 
 ```bash
 sudo apt install -y ccache   # faster rebuilds
 ```
 
-Phase 8 needs **~25 GB free disk** for a kernel tree and build directory, and **8 GB RAM minimum** (16 GB recommended for parallel `make -j`).
+Part 8 needs **~25 GB free disk** for a kernel tree and build directory, and **8 GB RAM minimum** (16 GB recommended for parallel `make -j`).
 
 Set your local kernel tree before Module 8.2:
 
@@ -68,49 +68,49 @@ Set your local kernel tree before Module 8.2:
 export KERNEL_SRC="$HOME/src/linux"
 ```
 
-See [resources/phase-08.md](../resources/phase-08.md) for pinned kernel tag and VM setup.
+See [resources/part-08.md](../resources/part-08.md) for pinned kernel tag and VM setup.
 
-Required for Phase 9 (loadable kernel modules in VM):
+Required for Part 9 (loadable kernel modules in VM):
 
-- Complete Phase 8 setup first
-- Rebuild VM kernel with [labs/phase-09/configs/learn-c-modules.config](../labs/phase-09/configs/learn-c-modules.config) merged into `.config`
-- See [resources/phase-09.md](../resources/phase-09.md)
+- Complete Part 8 setup first
+- Rebuild VM kernel with [labs/part-09/configs/learn-c-modules.config](../labs/part-09/configs/learn-c-modules.config) merged into `.config`
+- See [resources/part-09.md](../resources/part-09.md)
 
-No additional host packages beyond Phase 8 are required for Phase 9.
+No additional host packages beyond Part 8 are required for Part 9.
 
-Optional for Phase 10 (AMD GPU analysis on host — Path A):
+Optional for Part 10 (AMD GPU analysis on host — Path A):
 
 ```bash
 sudo apt install -y mesa-utils vulkan-tools   # glxinfo, vulkaninfo
 ```
 
-Phase 10 does **not** require AMD hardware; source-only analysis via `$KERNEL_SRC` or Elixir (Path B) is sufficient. See [resources/phase-10.md](../resources/phase-10.md).
+Part 10 does **not** require AMD hardware; source-only analysis via `$KERNEL_SRC` or Elixir (Path B) is sufficient. See [resources/part-10.md](../resources/part-10.md).
 
-Optional for Phase 11 (upstream submission — Path A):
+Optional for Part 11 (upstream submission — Path A):
 
 ```bash
 pip install --user b4          # preferred patch send/receive tool
 sudo apt install -y git-email  # optional; git send-email helper
 ```
 
-Phase 11 does **not** require email setup for Path B (dry-run export). See [resources/phase-11.md](../resources/phase-11.md).
+Part 11 does **not** require email setup for Path B (dry-run export). See [resources/part-11.md](../resources/part-11.md).
 
 ## Verify Installation
 
 From the repository root:
 
 ```bash
-./scripts/verify-phase-01.sh   # after Phase 1 setup
-./scripts/verify-phase-02.sh   # before Phase 2 (requires Valgrind)
-./scripts/verify-phase-03.sh   # before Phase 3
-./scripts/verify-phase-04.sh   # before Phase 4
-./scripts/verify-phase-05.sh   # before Phase 5
-./scripts/verify-phase-06.sh   # before Phase 6
-./scripts/verify-phase-07.sh   # before Phase 7
-./scripts/verify-phase-08.sh   # before Phase 8
-./scripts/verify-phase-09.sh   # before Phase 9 (requires Phase 8 + modules config)
-./scripts/verify-phase-10.sh   # before Phase 10
-./scripts/verify-phase-11.sh   # before Phase 11
+./scripts/verify-part-01.sh   # after Part 1 setup
+./scripts/verify-part-02.sh   # before Part 2 (requires Valgrind)
+./scripts/verify-part-03.sh   # before Part 3
+./scripts/verify-part-04.sh   # before Part 4
+./scripts/verify-part-05.sh   # before Part 5
+./scripts/verify-part-06.sh   # before Part 6
+./scripts/verify-part-07.sh   # before Part 7
+./scripts/verify-part-08.sh   # before Part 8
+./scripts/verify-part-09.sh   # before Part 9 (requires Part 8 + modules config)
+./scripts/verify-part-10.sh   # before Part 10
+./scripts/verify-part-11.sh   # before Part 11
 ```
 
 Expected output: all checks pass with `OK` messages.
@@ -122,12 +122,12 @@ gcc --version          # GCC 11+ (13+ recommended)
 gdb --version
 git --version
 make --version
-valgrind --version     # Phase 2.5+
+valgrind --version     # Part 2.5+
 ```
 
 ## Compiler Flags (Use Always)
 
-For all Phase 1 projects, compile with:
+For all Part 1 projects, compile with:
 
 ```bash
 gcc -Wall -Wextra -std=c11 -g -o program source.c
@@ -156,7 +156,7 @@ Learn to read manual pages early:
 ```bash
 man 3 printf     # Library function
 man 1 ls         # User command
-man 2 open       # System call (Phase 4+)
+man 2 open       # System call (Part 4+)
 man 7 signal     # Overview page
 ```
 
@@ -185,9 +185,9 @@ Compile with `-g` and without `-O2` while learning: `gcc -g -O0 ...`
 ### Permission denied running verify script
 
 ```bash
-chmod +x scripts/verify-phase-01.sh scripts/verify-phase-02.sh scripts/verify-phase-03.sh scripts/verify-phase-04.sh scripts/verify-phase-05.sh scripts/verify-phase-06.sh scripts/verify-phase-07.sh scripts/verify-phase-08.sh scripts/verify-phase-09.sh scripts/verify-phase-10.sh scripts/verify-phase-11.sh
+chmod +x scripts/verify-part-01.sh scripts/verify-part-02.sh scripts/verify-part-03.sh scripts/verify-part-04.sh scripts/verify-part-05.sh scripts/verify-part-06.sh scripts/verify-part-07.sh scripts/verify-part-08.sh scripts/verify-part-09.sh scripts/verify-part-10.sh scripts/verify-part-11.sh
 ```
 
 ## Next Step
 
-Begin [Phase 1, Module 1.1](../phase-01-programming-foundations/module-01-01-first-c-program/README.md).
+Begin [Part 1, Module 1.1](../part-01-programming-foundations/module-01-01-first-c-program/README.md).
