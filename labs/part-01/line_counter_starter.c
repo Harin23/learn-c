@@ -6,13 +6,20 @@
  * Usage:   ./line_counter filename
  */
 #include <stdio.h>
-#include <stdlib.h>
 
-/* TODO: implement — return number of newline characters in file */
 int count_lines(FILE *fp)
 {
-	(void)fp;
-	return -1; /* replace with real implementation */
+	int lines = 0, ch;
+
+	//rewind(fp); // point to start of file incase it has been partially read
+
+	while ((ch = fgetc(fp)) != EOF) {
+		printf("%c", ch);
+		if (ch == '\n')
+		lines++;
+	}
+
+	return lines;
 }
 
 int main(int argc, char *argv[])
