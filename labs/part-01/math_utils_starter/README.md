@@ -9,3 +9,10 @@ Split `math_demo.c` into:
 Add a `Makefile` with `all` and `clean` targets.
 
 See [Module 1.3](../../part-01-programming-foundations/module-01-03-functions/README.md).
+
+--------
+# Notes after completing lab:
+
+- build: `make`
+- run using `./main`
+- `make clean` to clean up the resources afterwards
