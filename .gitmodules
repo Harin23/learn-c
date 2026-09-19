@@ -7,3 +7,6 @@
 [submodule "project-repos/project-3"]
 	path = project-repos/project-3
 	url = git@github.com:Harin23/c-project-3-grade-calculator.git
+[submodule "project-repos/project-4"]
+	path = project-repos/project-4
+	url = git@github.com:Harin23/c-project-4-statistics-library.git
