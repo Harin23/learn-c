@@ -36,12 +36,12 @@ Projects for these parts are listed in [docs/project-sequence.md](docs/project-s
   - [x] Lab 3: Line counter (`labs/part-01/line_counter_starter.c`)
   - [x] Project 2: Guess-the-Number Game → `project-repos/project-2`
   - [x] Project 3: Grade Calculator → `project-repos/project-3`
-- [ ] 1.3 — Functions and Program Organization
+- [x] 1.3 — Functions and Program Organization
   - [x] Lab 1: Extract math helpers into `.h`/`.c` (`labs/part-01/math_utils_starter/`)
   - [x] Lab 2: Makefile build (`all` + `clean`)
   - [x] Lab 3: Pass-by-value with GDB (`module-01-03-functions/swap-demo.c`)
-  - [ ] Project 4: Statistics Library → `project-repos/project-4`
-  - [ ] Exit criteria signed off
+  - [x] Project 4: Statistics Library → `project-repos/project-4`
+  - [x] Exit criteria signed off
 - [ ] 1.4 — Arrays, Strings, Structs, and Enums
   - [ ] Lab 1: Reverse string in place (`labs/part-01/reverse_string_starter.c`)
   - [ ] Lab 2: CSV line parser (`labs/part-01/sample_contacts.csv`)
