@@ -7,10 +7,18 @@
 #include <stdio.h>
 #include <string.h>
 
-/* TODO: reverse s in place */
 void reverse_string(char *s)
 {
-	(void)s;
+	int len = strlen(s);
+	char reversed[strlen(s)];
+	for (int i=0; i<len; i++) {
+		// printf("%c\n", s[len-1-i]);
+		reversed[i] = s[len-1-i];
+		// printf("%c\n", reversed[i]);
+	}
+	for (int i=0; i<len; i++) {
+		s[i] = reversed[i];
+	}
 }
 
 int main(void)
