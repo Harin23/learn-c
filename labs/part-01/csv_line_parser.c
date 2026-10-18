@@ -6,12 +6,12 @@
 //
 
 #include <stdio.h>
+#include <string.h>
 
-static const int MAX_LINE_LEN = 1024;
+static constexpr int MAX_LINE_LEN = 1024;
+static constexpr char delimiter[] = ",";
 
-//todo clean this up and refactor out of main
 int main () {
-
     FILE *pointer_file = fopen("./sample_contacts.csv", "r");
     char buffer[MAX_LINE_LEN];
 
@@ -22,6 +22,16 @@ int main () {
 
     while (fgets(buffer, sizeof(buffer), pointer_file) != NULL) {
         printf("Read: %s", buffer);
+        // Get the first token
+        char *token = strtok(buffer, delimiter);
+
+        // Walk through the rest of the tokens
+        while (token != NULL) {
+            printf("Token: %s\n", token);
+            
+            // Subsequent calls require NULL as the first argument
+            token = strtok(nullptr, delimiter);
+        }
     }
 
     if (feof(pointer_file)) {
