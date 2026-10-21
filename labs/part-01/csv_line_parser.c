@@ -12,7 +12,7 @@
 // static constexpr int MAX_LINE_LEN = 1024;
 static constexpr int MAX_LINES = 100;
 static constexpr int MAX_LEN = 512;
-static constexpr char delimiter[] = ",";
+static constexpr char DELIMITER[] = ",";
 static constexpr char newline[] = "\n";
 
 typedef struct {
@@ -36,7 +36,7 @@ int main () {
     while (row < MAX_LINES && fgets(buffer, sizeof(buffer), pointer_file) != NULL) {
         printf("Read: %s", buffer);
         // Get the first token
-        char *token = strtok(buffer, delimiter);//c automatically passes the pointer to first element in array so equivalent of `&delimiter[0]`
+        char *token = strtok(buffer, DELIMITER);//c automatically passes the pointer to first element in array so equivalent of `&delimiter[0]`
 
         int col = 0;
         Person personTemp = {};
@@ -65,8 +65,14 @@ int main () {
             }
 
             // Subsequent calls require NULL as the first argument
-            token = strtok(nullptr, delimiter);
+            // if (row == 4 && col == 1) {
+            //     printf("\n\ntoken: [%s], len: %lu, finding delimiters:[%c],[%c],[%c],[%c],[%c],[%c]\n\n", token, strlen(token), buffer[strlen(token)-4], buffer[strlen(token)-3], buffer[strlen(token)-2], buffer[strlen(token)-1],buffer[strlen(token)],buffer[strlen(token)+1]);
+            // }
+            token = strtok(nullptr, DELIMITER);
             col++;
+            // if (buffer[strlen(token)-2] == ',') {
+            //     col++;
+            // }
         }
         printf("Row: %d, struct name: [%s], struct age: [%d], struct title: [%s]\n", row, personArray[row].name, personArray[row].age, personArray[row].title);
         row++;
