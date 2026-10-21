@@ -6,45 +6,70 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-static constexpr int MAX_LINE_LEN = 1024;
+// static constexpr int MAX_LINE_LEN = 1024;
+static constexpr int MAX_LINES = 100;
+static constexpr int MAX_LEN = 512;
 static constexpr char delimiter[] = ",";
 static constexpr char newline[] = "\n";
 
 typedef struct {
-    char name[MAX_LINE_LEN];
+    char name[MAX_LEN];
     int age;
-    char title[MAX_LINE_LEN];
+    char title[MAX_LEN];
 } Person;
 
 int main () {
     FILE *pointer_file = fopen("./sample_contacts.csv", "r");
-    char buffer[MAX_LINE_LEN];
+    char buffer[MAX_LINES];
 
     if (pointer_file == NULL) {
         printf("Failed to open file.\n");
         return 1;
     }
 
+    Person personArray[MAX_LINES] = {};
 
-    while (fgets(buffer, sizeof(buffer), pointer_file) != NULL) {
+    int row = 0;
+    while (row < MAX_LINES && fgets(buffer, sizeof(buffer), pointer_file) != NULL) {
         printf("Read: %s", buffer);
         // Get the first token
         char *token = strtok(buffer, delimiter);//c automatically passes the pointer to first element in array so equivalent of `&delimiter[0]`
 
-        // char [][]
+        int col = 0;
+        Person personTemp = {};
+        personArray[row] = personTemp;
         // Walk through the rest of the tokens
         while (token != NULL) {
-            const size_t length = strcspn(token, newline);
-            if (length != strlen(token)) {
+            printf("r: %d,c: %d, token: [%s]\n", row, col, token);
 
+            if (col == 0) {
+                strncpy(personArray[row].name, token, MAX_LEN-1);
+                personArray[row].name[MAX_LEN-1] = '\0';
             }
-            printf("Token: [%s]\n updatedToken: [%s]", token, updatedToken);
-            
+
+            if (col == 1) {
+                char *p_err;
+                personArray[row].age = (int)strtol(token, &p_err, 10);
+                if (p_err == token) {
+                    printf("Unable to parse age from line %d: %s\n", row, p_err);
+                }
+            }
+
+            if (col == 2) {
+                const size_t length = strcspn(token, newline);
+                strncpy(personArray[row].title, token, MAX_LEN-1);
+                personArray[row].title[length] = '\0';
+            }
+
             // Subsequent calls require NULL as the first argument
             token = strtok(nullptr, delimiter);
+            col++;
         }
+        printf("Row: %d, struct name: [%s], struct age: [%d], struct title: [%s]\n", row, personArray[row].name, personArray[row].age, personArray[row].title);
+        row++;
     }
 
     if (feof(pointer_file)) {
