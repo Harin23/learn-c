@@ -13,7 +13,7 @@
 static constexpr int MAX_LINES = 100;
 static constexpr int MAX_LEN = 512;
 static constexpr char DELIMITER[] = ",";
-static constexpr char newline[] = "\n";
+static constexpr char NEWLINE[] = "\n";
 
 typedef struct {
     char name[MAX_LEN];
@@ -22,6 +22,7 @@ typedef struct {
 } Person;
 
 //todo drop strtok
+//todo could use strcspn with DELIMITER to get length of string before next occurance
 int main () {
     FILE *pointer_file = fopen("./sample_contacts.csv", "r");
     char buffer[MAX_LINES];
@@ -60,7 +61,7 @@ int main () {
             }
 
             if (col == 2) {
-                const size_t length = strcspn(token, newline);
+                const size_t length = strcspn(token, NEWLINE);
                 strncpy(personArray[row].title, token, MAX_LEN-1);
                 personArray[row].title[length] = '\0';
             }
