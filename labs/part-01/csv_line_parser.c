@@ -21,6 +21,7 @@ typedef struct {
     char title[MAX_LEN];
 } Person;
 
+//todo drop strtok
 int main () {
     FILE *pointer_file = fopen("./sample_contacts.csv", "r");
     char buffer[MAX_LINES];
@@ -65,14 +66,8 @@ int main () {
             }
 
             // Subsequent calls require NULL as the first argument
-            // if (row == 4 && col == 1) {
-            //     printf("\n\ntoken: [%s], len: %lu, finding delimiters:[%c],[%c],[%c],[%c],[%c],[%c]\n\n", token, strlen(token), buffer[strlen(token)-4], buffer[strlen(token)-3], buffer[strlen(token)-2], buffer[strlen(token)-1],buffer[strlen(token)],buffer[strlen(token)+1]);
-            // }
             token = strtok(nullptr, DELIMITER);
             col++;
-            // if (buffer[strlen(token)-2] == ',') {
-            //     col++;
-            // }
         }
         printf("Row: %d, struct name: [%s], struct age: [%d], struct title: [%s]\n", row, personArray[row].name, personArray[row].age, personArray[row].title);
         row++;
