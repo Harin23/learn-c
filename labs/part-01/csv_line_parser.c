@@ -9,6 +9,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+//todo look over initializations and memory allocations. buffer smaller than struct props (name, title).
+//todo handle line that is too long (reject/truncate). this is part of criteria for lab completion
+//todo fix warnings
+
 // static constexpr int MAX_LINE_LEN = 1024;
 static constexpr int MAX_LINES = 100;
 static constexpr int MAX_LEN = 512;
