@@ -13,9 +13,9 @@
 //todo handle line that is too long (reject/truncate). this is part of criteria for lab completion
 //todo fix warnings
 
-static constexpr int MAX_LINE_LEN = 1024;
+static constexpr int MAX_LINE_LEN = 512;
 static constexpr int MAX_LINES = 100;
-static constexpr int MAX_LEN = 512;
+static constexpr int MAX_LEN = 128;
 static constexpr char DELIMITER = ',';
 static constexpr char NEWLINE = '\n';
 static constexpr char NUL = '\0';
@@ -81,7 +81,7 @@ int main () {
                 }
             }
         }
-        // printf("\n\nRow: %d, struct name: [%s], struct age: [%d], struct title: [%s]\n\n", row, personArray[row].name, personArray[row].age, personArray[row].title);
+        printf("\n\nRow: %d, struct name: [%s], struct age: [%d], struct title: [%s]\n\n", row, personArray[row].name, personArray[row].age, personArray[row].title);
         row++;
     }
 
