@@ -9,10 +9,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-//todo look over initializations and memory allocations. buffer smaller than struct props (name, title).
-//todo handle line that is too long (reject/truncate). this is part of criteria for lab completion
-//todo fix warnings
-
 static constexpr int MAX_LINE_LEN = 512;
 static constexpr int MAX_LINES = 100;
 static constexpr int MAX_LEN = 128;
@@ -42,9 +38,14 @@ int main () {
         // printf("Read: %lu, [%c], [%s]", strlen(buffer), buffer[strlen(buffer)], buffer);
         const size_t LENGTH = strlen(buffer);
 
+        if (LENGTH == 1 && (buffer[0] == NEWLINE || feof(pointer_file))) {
+            printf("Skipping empty line\n");
+            continue;
+        }
+
         if (LENGTH > 0 && !(buffer[LENGTH-1] == NEWLINE || feof(pointer_file))) {
             //drop line didn't fit into buffer
-            printf("Skipping line due to buffer overflow.\n");
+            printf("Skipping line due to buffer overflow. Max line size allowed: %i\n", MAX_LINE_LEN);
             int c;
             while (( c = fgetc(pointer_file)) != NEWLINE && c != EOF) {};
             continue;
@@ -78,6 +79,8 @@ int main () {
                 const size_t j = i - startIndex;
                 if (j < MAX_LEN - 1) {
                     temp[j] = buffer[i];
+                }else {
+                    printf("Max length of %i exceeded", MAX_LEN - 1);
                 }
             }
         }
