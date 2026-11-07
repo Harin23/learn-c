@@ -56,7 +56,6 @@ int main () {
         for (int i=0, col = 0, startIndex = 0; i <= LENGTH; i++) {
             if (buffer[i] == DELIMITER || buffer[i] == NEWLINE || buffer[i] == NUL) {
                 if (col == 0) {
-                    temp[i-startIndex] = NUL;
                     strncpy(personArray[row].name, temp, MAX_LEN-1);
                 }
 
@@ -70,7 +69,6 @@ int main () {
                 }
 
                 if (col == 2) {
-                    temp[i-startIndex] = NUL;
                     strncpy(personArray[row].title, temp, MAX_LEN-1);
                 }
                 startIndex = i+1;
