@@ -13,7 +13,7 @@
 //todo handle line that is too long (reject/truncate). this is part of criteria for lab completion
 //todo fix warnings
 
-// static constexpr int MAX_LINE_LEN = 1024;
+static constexpr int MAX_LINE_LEN = 1024;
 static constexpr int MAX_LINES = 100;
 static constexpr int MAX_LEN = 512;
 static constexpr char DELIMITER = ',';
@@ -28,7 +28,7 @@ typedef struct {
 
 int main () {
     FILE *pointer_file = fopen("./sample_contacts.csv", "r");
-    char buffer[MAX_LINES];
+    char buffer[MAX_LINE_LEN];
 
     if (pointer_file == NULL) {
         printf("Failed to open file.\n");
@@ -40,7 +40,7 @@ int main () {
     int row = 0;
     while (row < MAX_LINES && fgets(buffer, sizeof(buffer), pointer_file) != NULL) {
         // printf("Read: %lu, [%c], [%s]", strlen(buffer), buffer[strlen(buffer)], buffer);
-
+        
         Person personTemp = {};
         personArray[row] = personTemp;
         char temp[MAX_LEN]="";
