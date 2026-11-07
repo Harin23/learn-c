@@ -78,7 +78,7 @@ int main () {
                 strncpy(temp, "", MAX_LEN-1);
             }else {
                 uint16_t j = i - startIndex;
-                if (j < MAX_LEN) {
+                if (j < MAX_LEN - 1) {
                     temp[j] = buffer[i];
                 }
             }
