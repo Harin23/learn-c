@@ -41,11 +41,19 @@ int main () {
     int row = 0;
     while (row < MAX_LINES && fgets(buffer, sizeof(buffer), pointer_file) != NULL) {
         // printf("Read: %lu, [%c], [%s]", strlen(buffer), buffer[strlen(buffer)], buffer);
+        const int LENGTH = strlen(buffer);
+
+        if (LENGTH > 0 && !(buffer[LENGTH-1] == NEWLINE || feof(pointer_file))) {
+            //line didn't fit into buffer
+            int c;
+            while (( c = fgetc(pointer_file)) != NEWLINE && c != EOF) {};
+            continue;
+        }
 
         Person personTemp = {};
         personArray[row] = personTemp;
         char temp[MAX_LEN]="";
-        for (int i=0, LENGTH = strlen(buffer), col = 0, startIndex = 0; i <= LENGTH; i++) {
+        for (int i=0, col = 0, startIndex = 0; i <= LENGTH; i++) {
             if (buffer[i] == DELIMITER || buffer[i] == NEWLINE || buffer[i] == NUL) {
                 if (col == 0) {
                     temp[i-startIndex] = NUL;
