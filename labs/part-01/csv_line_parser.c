@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 
 //todo look over initializations and memory allocations. buffer smaller than struct props (name, title).
 //todo handle line that is too long (reject/truncate). this is part of criteria for lab completion
@@ -40,7 +41,7 @@ int main () {
     int row = 0;
     while (row < MAX_LINES && fgets(buffer, sizeof(buffer), pointer_file) != NULL) {
         // printf("Read: %lu, [%c], [%s]", strlen(buffer), buffer[strlen(buffer)], buffer);
-        
+
         Person personTemp = {};
         personArray[row] = personTemp;
         char temp[MAX_LEN]="";
@@ -68,7 +69,10 @@ int main () {
                 col++;
                 strncpy(temp, "", MAX_LEN-1);
             }else {
-                temp[i-startIndex] = buffer[i];
+                uint16_t j = i - startIndex;
+                if (j < MAX_LEN) {
+                    temp[j] = buffer[i];
+                }
             }
         }
         // printf("\n\nRow: %d, struct name: [%s], struct age: [%d], struct title: [%s]\n\n", row, personArray[row].name, personArray[row].age, personArray[row].title);
