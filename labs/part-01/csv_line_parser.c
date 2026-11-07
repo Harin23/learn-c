@@ -8,7 +8,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdint.h>
 
 //todo look over initializations and memory allocations. buffer smaller than struct props (name, title).
 //todo handle line that is too long (reject/truncate). this is part of criteria for lab completion
@@ -41,10 +40,11 @@ int main () {
     int row = 0;
     while (row < MAX_LINES && fgets(buffer, sizeof(buffer), pointer_file) != NULL) {
         // printf("Read: %lu, [%c], [%s]", strlen(buffer), buffer[strlen(buffer)], buffer);
-        const int LENGTH = strlen(buffer);
+        const size_t LENGTH = strlen(buffer);
 
         if (LENGTH > 0 && !(buffer[LENGTH-1] == NEWLINE || feof(pointer_file))) {
-            //line didn't fit into buffer
+            //drop line didn't fit into buffer
+            printf("Skipping line due to buffer overflow.\n");
             int c;
             while (( c = fgetc(pointer_file)) != NEWLINE && c != EOF) {};
             continue;
@@ -53,7 +53,7 @@ int main () {
         Person personTemp = {};
         personArray[row] = personTemp;
         char temp[MAX_LEN]="";
-        for (int i=0, col = 0, startIndex = 0; i <= LENGTH; i++) {
+        for (size_t i=0, col = 0, startIndex = 0; i <= LENGTH; i++) {
             if (buffer[i] == DELIMITER || buffer[i] == NEWLINE || buffer[i] == NUL) {
                 if (col == 0) {
                     strncpy(personArray[row].name, temp, MAX_LEN-1);
@@ -75,7 +75,7 @@ int main () {
                 col++;
                 strncpy(temp, "", MAX_LEN-1);
             }else {
-                uint16_t j = i - startIndex;
+                const size_t j = i - startIndex;
                 if (j < MAX_LEN - 1) {
                     temp[j] = buffer[i];
                 }
