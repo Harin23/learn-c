@@ -51,8 +51,6 @@ int main () {
             continue;
         }
 
-        Person personTemp = {};
-        personArray[row] = personTemp;
         char temp[MAX_LEN]="";
         for (size_t i=0, col = 0, startIndex = 0; i <= LENGTH; i++) {
             if (buffer[i] == DELIMITER || buffer[i] == NEWLINE || buffer[i] == NUL) {
