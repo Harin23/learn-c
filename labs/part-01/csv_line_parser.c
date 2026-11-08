@@ -3,6 +3,7 @@
 //
 // Parse a line like Alice,28,Engineer
 // into a Person struct with name, age, and title fields. Handle fields with a fixed maximum name length.
+// Maximum length per line is 511 chars including delimiter and new line char and max length per value is 127 chars
 //
 
 #include <stdio.h>
@@ -38,22 +39,24 @@ int main () {
         // printf("Read: %lu, [%c], [%s]", strlen(buffer), buffer[strlen(buffer)], buffer);
         const size_t LENGTH = strlen(buffer);
 
-        if (LENGTH == 1 && (buffer[0] == NEWLINE || feof(pointer_file))) {
+        if (buffer[0] == NEWLINE) {
             printf("Skipping empty line\n");
             continue;
         }
 
         if (LENGTH > 0 && !(buffer[LENGTH-1] == NEWLINE || feof(pointer_file))) {
             //drop line didn't fit into buffer
-            printf("Skipping line due to buffer overflow. Max line size allowed: %i\n", MAX_LINE_LEN);
             int c;
             while (( c = fgetc(pointer_file)) != NEWLINE && c != EOF) {};
+            printf("Skipping line due to buffer overflow. Max line size allowed: %i\n", MAX_LINE_LEN-1);
             continue;
         }
 
         char temp[MAX_LEN]="";
+        bool skip_until_next_comma = false;
         for (size_t i=0, col = 0, startIndex = 0; i <= LENGTH; i++) {
             if (buffer[i] == DELIMITER || buffer[i] == NEWLINE || buffer[i] == NUL) {
+                skip_until_next_comma = false;
                 if (col == 0) {
                     strncpy(personArray[row].name, temp, MAX_LEN-1);
                 }
@@ -74,15 +77,19 @@ int main () {
                 col++;
                 strncpy(temp, "", MAX_LEN-1);
             }else {
+                if (skip_until_next_comma) {
+                    continue;
+                }
                 const size_t j = i - startIndex;
                 if (j < MAX_LEN - 1) {
                     temp[j] = buffer[i];
                 }else {
-                    printf("Max length of %i exceeded", MAX_LEN - 1);
+                    skip_until_next_comma = true;
+                    printf("Max length of %i exceeded\n", MAX_LEN - 1);
                 }
             }
         }
-        printf("\n\nRow: %d, struct name: [%s], struct age: [%d], struct title: [%s]\n\n", row, personArray[row].name, personArray[row].age, personArray[row].title);
+        // printf("\n\nRow: %d, struct name: [%s], struct age: [%d], struct title: [%s]\n\n", row, personArray[row].name, personArray[row].age, personArray[row].title);
         row++;
     }
 

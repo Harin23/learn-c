@@ -21,4 +21,5 @@ core.*
 gradebook.csv
 contacts.dat
 
-part-01-programming-foundations/module-01-02-control-flow/fizzbuzz
+part-01-programming-foundations/module-01-02-control-flow/
+labs/part-01/csv_line_parser
