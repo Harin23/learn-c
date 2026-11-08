@@ -44,7 +44,7 @@ Projects for these parts are listed in [docs/project-sequence.md](docs/project-s
   - [x] Exit criteria signed off
 - [ ] 1.4 — Arrays, Strings, Structs, and Enums
   - [x] Lab 1: Reverse string in place (`labs/part-01/reverse_string_starter.c`)
-  - [ ] Lab 2: CSV line parser (`labs/part-01/sample_contacts.csv`)
+  - [x] Lab 2: CSV line parser (`labs/part-01/sample_contacts.csv`)
   - [ ] Lab 3: Enum state machine
   - [ ] Project 5: Contact Card Manager
   - [ ] Project 6: Word Counter CLI
